@@ -1,0 +1,41 @@
+//
+//  ViewController.swift
+//  App-Event
+//
+//  Created by Gabriel Mors  on 07/05/23.
+//
+
+import UIKit
+
+class HomeViewController: UIViewController {
+    
+    var homeScreen: HomeScreen?
+    var viewModel: HomeViewModel = HomeViewModel()
+    
+    override func loadView() {
+        homeScreen = HomeScreen()
+        view = homeScreen
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
+    }
+    
+    
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell
+        cell?.setupCell(name: viewModel.getList(index: indexPath.row))
+        return UITableViewCell()
+    }
+    
+    
+}

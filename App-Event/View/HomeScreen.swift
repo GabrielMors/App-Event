@@ -22,8 +22,9 @@ class HomeScreen: UIView {
     }
     
     public func configProtocolTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
+        tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
     }
     
     private func configContraints() {
@@ -35,3 +36,5 @@ class HomeScreen: UIView {
     }
     
 }
+
+

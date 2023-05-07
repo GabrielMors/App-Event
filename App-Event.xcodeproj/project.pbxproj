@@ -14,6 +14,9 @@
 		C444A43D2A07BE490075F4EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C444A43B2A07BE490075F4EB /* LaunchScreen.storyboard */; };
 		C444A4482A07C6C00075F4EB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A4472A07C6C00075F4EB /* HomeScreen.swift */; };
 		C444A44D2A07CA270075F4EB /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A44C2A07CA270075F4EB /* UIView + Extension.swift */; };
+		C444A44F2A07CC6B0075F4EB /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A44E2A07CC6B0075F4EB /* HomeCell.swift */; };
+		C444A4522A07DA7A0075F4EB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A4512A07DA7A0075F4EB /* HomeModel.swift */; };
+		C444A4572A07DDB10075F4EB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A4562A07DDB10075F4EB /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		C444A43E2A07BE490075F4EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C444A4472A07C6C00075F4EB /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		C444A44C2A07CA270075F4EB /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C444A44E2A07CC6B0075F4EB /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		C444A4512A07DA7A0075F4EB /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		C444A4562A07DDB10075F4EB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +66,9 @@
 			children = (
 				C444A44B2A07C9FA0075F4EB /* Extension */,
 				C444A4492A07C8370075F4EB /* Cell */,
-				C444A44A2A07C8880075F4EB /* Tela01 */,
+				C444A4502A07DA6B0075F4EB /* Model */,
+				C444A44A2A07C8880075F4EB /* View */,
+				C444A4552A07DD870075F4EB /* ViewModel */,
 				C444A4442A07C5C70075F4EB /* Resources */,
 				C444A43E2A07BE490075F4EB /* Info.plist */,
 			);
@@ -81,17 +89,18 @@
 		C444A4492A07C8370075F4EB /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C444A44E2A07CC6B0075F4EB /* HomeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C444A44A2A07C8880075F4EB /* Tela01 */ = {
+		C444A44A2A07C8880075F4EB /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C444A4472A07C6C00075F4EB /* HomeScreen.swift */,
 				C444A4342A07BE460075F4EB /* HomeViewController.swift */,
 			);
-			path = Tela01;
+			path = View;
 			sourceTree = "<group>";
 		};
 		C444A44B2A07C9FA0075F4EB /* Extension */ = {
@@ -100,6 +109,22 @@
 				C444A44C2A07CA270075F4EB /* UIView + Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C444A4502A07DA6B0075F4EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C444A4512A07DA7A0075F4EB /* HomeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C444A4552A07DD870075F4EB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C444A4562A07DDB10075F4EB /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +200,10 @@
 				C444A4352A07BE460075F4EB /* HomeViewController.swift in Sources */,
 				C444A4312A07BE460075F4EB /* AppDelegate.swift in Sources */,
 				C444A4482A07C6C00075F4EB /* HomeScreen.swift in Sources */,
+				C444A4572A07DDB10075F4EB /* HomeViewModel.swift in Sources */,
+				C444A4522A07DA7A0075F4EB /* HomeModel.swift in Sources */,
 				C444A44D2A07CA270075F4EB /* UIView + Extension.swift in Sources */,
+				C444A44F2A07CC6B0075F4EB /* HomeCell.swift in Sources */,
 				C444A4332A07BE460075F4EB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
