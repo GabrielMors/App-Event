@@ -32,12 +32,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell
+        cell?.delegate(delegate: self)
         cell?.setupCell(model: viewModel.getList(index: indexPath.row))
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        120
     }
+}
+
+extension HomeViewController: HomeCellProtocol {
+    func tappedButton() {
+        
+        
+    }
+    
     
 }

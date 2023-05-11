@@ -1,78 +1,86 @@
 import UIKit
 
+protocol HomeCellProtocol {
+    func tappedButton()
+}
+
 class HomeCell: UITableViewCell {
     
     static var identifier: String = String(describing: HomeCell.self)
     
-    lazy var NameOfEvent: UILabel = {
-        let name = UILabel()
-        name.translatesAutoresizingMaskIntoConstraints = false
-        name.text = "Nome do evento"
-        name.font = UIFont.systemFont(ofSize: 20)
+    var delegate: HomeCellProtocol?
+    
+    public func delegate(delegate: HomeCellProtocol) {
+        self.delegate = delegate
+    }
+    
+    lazy var NameOfEventLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 20)
         
-        return name
+        return label
     }()
     
-    lazy var imageOfEvent: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.image = UIImage(systemName: "person.fill")
-        img.contentMode = .scaleToFill
-        img.tintColor = .black
+    lazy var imageOfEventImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleToFill
+        image.tintColor = .black
         
-        return img
+        return image
     }()
     
     lazy var acessarButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("Acessar", for: .normal)
-        bt.tintColor = UIColor.black
-        bt.backgroundColor = .darkGray
-        bt.clipsToBounds = true
-        bt.layer.cornerRadius = 7.5
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Acessar", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .darkGray
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 7.5
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        return bt
+        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(self.imageOfEvent)
-        self.addSubview(self.NameOfEvent)
-        self.addSubview(self.acessarButton)
+        contentView.addSubview(self.imageOfEventImage)
+        contentView.addSubview(self.NameOfEventLabel)
+        contentView.addSubview(self.acessarButton)
         configConstraints()
-        self.acessarButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupCell(model: Evento) {
-        NameOfEvent.text = model.name
-        imageOfEvent.image = UIImage(systemName: model.image)
+        NameOfEventLabel.text = model.name
+        imageOfEventImage.image = UIImage(systemName: model.image)
+    }
+    
+    @objc private func buttonTapped() {
+        self.delegate?.tappedButton()
     }
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
             
-            imageOfEvent.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageOfEvent.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageOfEvent.widthAnchor.constraint(equalToConstant: 80),
-            imageOfEvent.heightAnchor.constraint(equalToConstant: 80),
+            imageOfEventImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageOfEventImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            imageOfEventImage.widthAnchor.constraint(equalToConstant: 80),
+            imageOfEventImage.heightAnchor.constraint(equalToConstant: 80),
             
-            NameOfEvent.leadingAnchor.constraint(equalTo: self.imageOfEvent.trailingAnchor, constant: 15),
-            NameOfEvent.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-            NameOfEvent.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            NameOfEventLabel.leadingAnchor.constraint(equalTo: self.imageOfEventImage.trailingAnchor, constant: 15),
+            NameOfEventLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            NameOfEventLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
-            acessarButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            acessarButton.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            acessarButton.widthAnchor.constraint(equalToConstant: 80)
+            acessarButton.leadingAnchor.constraint(equalTo: self.imageOfEventImage.trailingAnchor, constant: 15),
+            acessarButton.topAnchor.constraint(equalTo: self.NameOfEventLabel.bottomAnchor, constant: 10),
+            acessarButton.widthAnchor.constraint(equalToConstant: 80),
             
         ])
     }
-    
-    @objc private func buttonTapped() {
-        
-    }
-    
 }

@@ -7,6 +7,7 @@ class HomeScreen: UIView {
         let tb: UITableView = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.isScrollEnabled = true
+        tb.showsVerticalScrollIndicator = false
         
         return tb
     }()
