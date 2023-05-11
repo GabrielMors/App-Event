@@ -22,20 +22,22 @@ class HomeViewController: UIViewController {
         homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
     }
     
-    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell
-        cell?.setupCell(name: viewModel.getList(index: indexPath.row))
-        return UITableViewCell()
+        cell?.setupCell(model: viewModel.getList(index: indexPath.row))
+        return cell ?? UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
+    }
     
 }

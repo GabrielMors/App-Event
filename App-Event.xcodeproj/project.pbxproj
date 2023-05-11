@@ -17,6 +17,8 @@
 		C444A4522A07DA7A0075F4EB /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A4512A07DA7A0075F4EB /* HomeModel.swift */; };
 		C444A4572A07DDB10075F4EB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C444A4562A07DDB10075F4EB /* HomeViewModel.swift */; };
 		C4DB43472A0C8D9200F49417 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB43462A0C8D9200F49417 /* UIView + Extension.swift */; };
+		C4DB434A2A0C934C00F49417 /* InformationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB43492A0C934C00F49417 /* InformationScreen.swift */; };
+		C4DB434C2A0C937400F49417 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB434B2A0C937400F49417 /* InformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C444A4512A07DA7A0075F4EB /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		C444A4562A07DDB10075F4EB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C4DB43462A0C8D9200F49417 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		C4DB43492A0C934C00F49417 /* InformationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationScreen.swift; sourceTree = "<group>"; };
+		C4DB434B2A0C937400F49417 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +70,8 @@
 			children = (
 				C4DB43452A0C8D0C00F49417 /* UIView + Extension */,
 				C444A4502A07DA6B0075F4EB /* Model */,
-				C444A4492A07C8370075F4EB /* Cell */,
-				C444A44A2A07C8880075F4EB /* View */,
-				C444A4552A07DD870075F4EB /* ViewModel */,
+				C4DB43482A0C91D000F49417 /* InformationScreen */,
+				C444A44A2A07C8880075F4EB /* Home */,
 				C444A4442A07C5C70075F4EB /* Resources */,
 				C444A43E2A07BE490075F4EB /* Info.plist */,
 			);
@@ -94,13 +97,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C444A44A2A07C8880075F4EB /* View */ = {
+		C444A44A2A07C8880075F4EB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C444A4472A07C6C00075F4EB /* HomeScreen.swift */,
-				C444A4342A07BE460075F4EB /* HomeViewController.swift */,
+				C4DB43512A0C944800F49417 /* View */,
+				C444A4552A07DD870075F4EB /* ViewModel */,
+				C444A4492A07C8370075F4EB /* Cell */,
 			);
-			path = View;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		C444A4502A07DA6B0075F4EB /* Model */ = {
@@ -125,6 +129,64 @@
 				C4DB43462A0C8D9200F49417 /* UIView + Extension.swift */,
 			);
 			path = "UIView + Extension";
+			sourceTree = "<group>";
+		};
+		C4DB43482A0C91D000F49417 /* InformationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB43522A0C94F900F49417 /* View */,
+			);
+			path = InformationScreen;
+			sourceTree = "<group>";
+		};
+		C4DB434D2A0C937900F49417 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB43492A0C934C00F49417 /* InformationScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		C4DB434E2A0C938200F49417 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB434B2A0C937400F49417 /* InformationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C4DB434F2A0C93DA00F49417 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				C444A4472A07C6C00075F4EB /* HomeScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		C4DB43502A0C93E900F49417 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C444A4342A07BE460075F4EB /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C4DB43512A0C944800F49417 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB434F2A0C93DA00F49417 /* Screen */,
+				C4DB43502A0C93E900F49417 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4DB43522A0C94F900F49417 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4DB434D2A0C937900F49417 /* Screen */,
+				C4DB434E2A0C938200F49417 /* Controller */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +266,9 @@
 				C4DB43472A0C8D9200F49417 /* UIView + Extension.swift in Sources */,
 				C444A4522A07DA7A0075F4EB /* HomeModel.swift in Sources */,
 				C444A44F2A07CC6B0075F4EB /* HomeCell.swift in Sources */,
+				C4DB434C2A0C937400F49417 /* InformationViewController.swift in Sources */,
 				C444A4332A07BE460075F4EB /* SceneDelegate.swift in Sources */,
+				C4DB434A2A0C934C00F49417 /* InformationScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

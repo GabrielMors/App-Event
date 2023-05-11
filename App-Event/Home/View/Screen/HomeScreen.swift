@@ -6,7 +6,7 @@ class HomeScreen: UIView {
     lazy var tableView: UITableView = {
         let tb: UITableView = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.isScrollEnabled = false
+        tb.isScrollEnabled = true
         
         return tb
     }()
