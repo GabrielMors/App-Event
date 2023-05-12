@@ -48,9 +48,9 @@ class HomeCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(self.imageOfEvent)
-        self.addSubview(self.NameOfEvent)
-        self.addSubview(self.acessarButton)
+        contentView.addSubview(self.imageOfEvent)
+        contentView.addSubview(self.NameOfEvent)
+        contentView.addSubview(self.acessarButton)
         configConstraints()
     }
 
@@ -83,6 +83,6 @@ class HomeCell: UITableViewCell {
     }
     
     @objc private func buttonTapped() {
-        
+        delegate?.tappedButton()
     }
 }
