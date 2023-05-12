@@ -3,6 +3,13 @@ import UIKit
 
 class HomeScreen: UIView {
 
+    lazy var logoImageView: UIImageView = {
+        let logo = UIImageView
+        
+        
+        return logo
+    }()
+    
     lazy var tableView: UITableView = {
         let tb: UITableView = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false

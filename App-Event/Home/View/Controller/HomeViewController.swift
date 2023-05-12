@@ -45,7 +45,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: HomeCellProtocol {
     func tappedButton() {
-        print("cliquei no botao")
+        let vc = InformationViewController()
+        navigationController?.pushViewController(vc , animated: true)
     }
     
     

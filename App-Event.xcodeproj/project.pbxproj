@@ -68,7 +68,7 @@
 		C444A42F2A07BE460075F4EB /* App-Event */ = {
 			isa = PBXGroup;
 			children = (
-				C4DB43452A0C8D0C00F49417 /* UIView + Extension */,
+				C4DB43452A0C8D0C00F49417 /* Extensions */,
 				C444A4502A07DA6B0075F4EB /* Model */,
 				C4DB43482A0C91D000F49417 /* InformationScreen */,
 				C444A44A2A07C8880075F4EB /* Home */,
@@ -123,12 +123,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C4DB43452A0C8D0C00F49417 /* UIView + Extension */ = {
+		C4DB43452A0C8D0C00F49417 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				C4DB43462A0C8D9200F49417 /* UIView + Extension.swift */,
 			);
-			path = "UIView + Extension";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C4DB43482A0C91D000F49417 /* InformationScreen */ = {
