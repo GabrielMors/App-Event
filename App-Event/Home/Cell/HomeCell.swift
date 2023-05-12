@@ -1,8 +1,18 @@
 import UIKit
 
+protocol HomeCellProtocol: AnyObject {
+    func tappedButton()
+}
+
 class HomeCell: UITableViewCell {
     
     static var identifier: String = String(describing: HomeCell.self)
+    
+    var delegate: HomeCellProtocol?
+    
+    func delegate(delegate: HomeCellProtocol) {
+        self.delegate = delegate
+    }
     
     lazy var NameOfEvent: UILabel = {
         let name = UILabel()
@@ -14,24 +24,26 @@ class HomeCell: UITableViewCell {
     }()
     
     lazy var imageOfEvent: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.image = UIImage(systemName: "person.fill")
-        img.contentMode = .scaleToFill
-        img.tintColor = .black
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(systemName: "person.fill")
+        image.contentMode = .scaleToFill
+        image.tintColor = .black
         
-        return img
+        return image
     }()
     
     lazy var acessarButton: UIButton = {
-        let bt = UIButton()
-        bt.setTitle("Acessar", for: .normal)
-        bt.tintColor = UIColor.black
-        bt.backgroundColor = .darkGray
-        bt.clipsToBounds = true
-        bt.layer.cornerRadius = 7.5
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Acessar", for: .normal)
+        button.tintColor = UIColor.black
+        button.backgroundColor = .darkGray
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 7.5
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
-        return bt
+        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -40,7 +52,6 @@ class HomeCell: UITableViewCell {
         self.addSubview(self.NameOfEvent)
         self.addSubview(self.acessarButton)
         configConstraints()
-        self.acessarButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -74,5 +85,4 @@ class HomeCell: UITableViewCell {
     @objc private func buttonTapped() {
         
     }
-    
 }

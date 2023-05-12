@@ -41,3 +41,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+extension HomeViewController: HomeCellProtocol {
+    func tappedButton() {
+        print("cliquei no botao")
+    }
+    
+    
+}
+
+
