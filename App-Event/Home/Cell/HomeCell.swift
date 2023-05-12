@@ -75,9 +75,9 @@ class HomeCell: UITableViewCell {
             NameOfEvent.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             NameOfEvent.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
-            acessarButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            acessarButton.topAnchor.constraint(equalTo: topAnchor, constant: 30),
-            acessarButton.widthAnchor.constraint(equalToConstant: 80)
+            acessarButton.leadingAnchor.constraint(equalTo: self.imageOfEvent.trailingAnchor, constant: 15),
+            acessarButton.topAnchor.constraint(equalTo: self.NameOfEvent.bottomAnchor, constant: 10),
+            acessarButton.widthAnchor.constraint(equalToConstant: 80),
             
         ])
     }
