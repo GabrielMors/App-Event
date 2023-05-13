@@ -1,12 +1,16 @@
 
 import UIKit
 
+enum textLabel: String {
+    case name = "List Of Event"
+}
+
 class HomeScreen: UIView {
     
     lazy var ListOfEventLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "List Of Event"
+        label.text = textLabel.name.rawValue
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .lightGray
@@ -54,7 +58,6 @@ class HomeScreen: UIView {
     private func configConstraintsLabel() {
         NSLayoutConstraint.activate([
             
-            // adiciona a constraint de topo com a view em vez da safe area
             ListOfEventLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             ListOfEventLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             ListOfEventLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
