@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
+    
     var homeScreen: HomeScreen?
     var viewModel: HomeViewModel = HomeViewModel()
     
@@ -19,6 +23,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
         homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
     }
     
@@ -34,6 +39,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell
         cell?.setupCell(model: viewModel.getList(index: indexPath.row))
         cell?.delegate(delegate: self)
+        cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
     

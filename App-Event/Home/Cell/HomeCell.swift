@@ -26,7 +26,6 @@ class HomeCell: UITableViewCell {
     lazy var imageOfEvent: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "person.fill")
         image.contentMode = .scaleToFill
         image.tintColor = .black
         
@@ -68,8 +67,8 @@ class HomeCell: UITableViewCell {
             
             imageOfEvent.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageOfEvent.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageOfEvent.widthAnchor.constraint(equalToConstant: 80),
-            imageOfEvent.heightAnchor.constraint(equalToConstant: 80),
+            imageOfEvent.widthAnchor.constraint(equalToConstant: 100),
+            imageOfEvent.heightAnchor.constraint(equalToConstant: 100),
             
             NameOfEvent.leadingAnchor.constraint(equalTo: self.imageOfEvent.trailingAnchor, constant: 15),
             NameOfEvent.topAnchor.constraint(equalTo: topAnchor, constant: 15),

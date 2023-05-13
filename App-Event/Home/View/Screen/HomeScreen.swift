@@ -2,12 +2,19 @@
 import UIKit
 
 class HomeScreen: UIView {
-
-    lazy var logoImageView: UIImageView = {
-        let logo = UIImageView
+    
+    lazy var ListOfEventLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "List Of Event"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .lightGray
+        label.backgroundColor = .darkGray
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 7.5
         
-        
-        return logo
+        return label
     }()
     
     lazy var tableView: UITableView = {
@@ -22,10 +29,12 @@ class HomeScreen: UIView {
         super.init(frame: frame)
         addSubViews()
         configContraints()
+        configConstraintsLabel()
     }
     
     private func addSubViews() {
-        addSubview(tableView)
+        self.addSubview(self.tableView)
+        self.addSubview(self.ListOfEventLabel)
     }
     
     public func configProtocolTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
@@ -40,6 +49,17 @@ class HomeScreen: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configConstraintsLabel() {
+        NSLayoutConstraint.activate([
+            
+            // adiciona a constraint de topo com a view em vez da safe area
+            ListOfEventLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
+            ListOfEventLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            ListOfEventLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        
+        ])
     }
     
 }
