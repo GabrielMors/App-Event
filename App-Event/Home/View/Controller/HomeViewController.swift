@@ -23,6 +23,13 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
+        homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
         viewModel.getEvents { eventos in
             for evento in eventos {
                 self.eventoRecebidos.append(evento)
@@ -30,14 +37,8 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 self.homeScreen?.tableView.reloadData()
             }
+            
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
-        homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
-        
     }
 }
 
@@ -54,6 +55,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.setupCell(model: eventoRecebidos[indexPath.row])
         cell?.delegate(delegate: self)
         cell?.selectionStyle = .none
+        viewModel.getImage(image: eventoRecebidos[indexPath.row].image) { image in
+            DispatchQueue.main.async {
+                cell?.imageOfEvent.image = image
+            }
+        }
+        
         return cell ?? UITableViewCell()
     }
     
