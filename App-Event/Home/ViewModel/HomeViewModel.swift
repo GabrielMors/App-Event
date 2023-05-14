@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class HomeViewModel {
     
     private var listName: [Evento] = []
@@ -21,24 +19,10 @@ class HomeViewModel {
         listName[index]
     }
     
-    func getEvents(completion: @escaping () -> Void) {
-        let eventAPI = EventAPI()
-        eventAPI.getEvents { [weak self] events in
-            guard let events = events else { return }
-            self?.listName = events
-            completion()
-        }
-    }
-}
-
-
-
-class EventAPI {
-    
-    func getEvents(completion: @escaping ([Evento]?) -> Void) {
+    func getEvents(completion: @escaping ([Evento]) -> Void) {
         
         guard let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events") else {
-            completion(nil)
+            
             return
         }
         
@@ -46,7 +30,7 @@ class EventAPI {
             
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "Unknown error")
-                completion(nil)
+                
                 return
             }
             
@@ -59,16 +43,81 @@ class EventAPI {
                 completion(events)
             } catch {
                 print(error.localizedDescription)
-                completion(nil)
+                
             }
         }
         
         task.resume()
     }
+    
+// Como eu passo getImage para minha setupCell
+// Como eu 
+    
+    func getImage(image: String, completion: @escaping (UIImage) -> Void ) {
+        
+        if let imageUrl = URL(string: image) {
+          // URLSession é uma classe
+            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                if let error = error {
+                    // Houve um erro ao fazer o download da imagem
+                    print("Erro ao baixar a imagem: \(error.localizedDescription)")
+                    
+                }
+
+                if let data = data, let image = UIImage(data: data) {
+                    // O download da imagem foi concluído, você pode usar a imagem aqui
+                    completion(image)
+                    
+                }
+            }.resume()
+        }
+    }
+    
+//    func getEvents(completion: @escaping () -> Void) {
+//        let eventAPI = EventAPI()
+//        eventAPI.getEvents { [weak self] events in
+//            guard let events = events else { return }
+//            self?.listName = events
+//            completion()
+//        }
+//    }
 }
 
 
 
+//class EventAPI {
+    
+//    func getEvents(completion: @escaping ([Evento]?) -> Void) {
+//
+//        guard let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events") else {
+//            completion(nil)
+//            return
+//        }
+//
+//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//
+//            guard let data = data, error == nil else {
+//                print(error?.localizedDescription ?? "Unknown error")
+//                completion(nil)
+//                return
+//            }
+//
+//            if let httpResponse = response as? HTTPURLResponse {
+//                print(httpResponse.statusCode)
+//            }
+//
+//            do {
+//                let events = try JSONDecoder().decode([Evento].self, from: data)
+//                completion(events)
+//            } catch {
+//                print(error.localizedDescription)
+//                completion(nil)
+//            }
+//        }
+//
+//        task.resume()
+//    }
+//}
 
 
 

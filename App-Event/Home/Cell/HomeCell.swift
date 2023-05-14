@@ -17,8 +17,8 @@ class HomeCell: UITableViewCell {
     lazy var NameOfEvent: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
-        name.text = "Nome do evento"
-        name.font = UIFont.systemFont(ofSize: 20)
+        name.numberOfLines = 2
+        name.font = UIFont.systemFont(ofSize: 16)
         
         return name
     }()
@@ -37,6 +37,7 @@ class HomeCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Acessar", for: .normal)
         button.tintColor = UIColor.black
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.backgroundColor = .darkGray
         button.clipsToBounds = true
         button.layer.cornerRadius = 7.5
@@ -58,7 +59,7 @@ class HomeCell: UITableViewCell {
     }
     
     func setupCell(model: Evento) {
-        NameOfEvent.text = model.name
+        NameOfEvent.text = model.title
         imageOfEvent.image = UIImage(systemName: model.image)
     }
     
