@@ -9,12 +9,6 @@ import UIKit
 
 class InformationScreen: UIView {
     
-    lazy var scrolView: UIScrollView = {
-        let scroll = UIScrollView()
-        
-        return scroll
-    }()
-    
     lazy var imageEvent: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +17,21 @@ class InformationScreen: UIView {
         image.layer.borderColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1).cgColor
         
         return image
+    }()
+    
+    lazy var scrolView: UIScrollView = {
+        let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.isScrollEnabled = true // desabilita o scroll para a imagem
+        
+        return scroll
+    }()
+    
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
     }()
     
     lazy var descriptionEvent: UILabel = {
@@ -46,8 +55,10 @@ class InformationScreen: UIView {
     }
     
     private func addSubViews() {
+        scrolView.addSubview(containerView)
+        containerView.addSubview(descriptionEvent)
         addSubview(imageEvent)
-        addSubview(descriptionEvent)
+        addSubview(scrolView)
     }
     
     required init?(coder: NSCoder) {
@@ -56,17 +67,29 @@ class InformationScreen: UIView {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-            
             imageEvent.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageEvent.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             imageEvent.widthAnchor.constraint(equalToConstant: 340),
             imageEvent.heightAnchor.constraint(equalToConstant: 240),
             
-            descriptionEvent.topAnchor.constraint(equalTo: imageEvent.bottomAnchor, constant: 20),
-            descriptionEvent.leadingAnchor.constraint(equalTo: leadingAnchor.self, constant: 20),
-            descriptionEvent.trailingAnchor.constraint(equalTo: trailingAnchor.self, constant: -20),
+            scrolView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrolView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrolView.topAnchor.constraint(equalTo: imageEvent.bottomAnchor, constant: 20),
+            scrolView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
+            containerView.leadingAnchor.constraint(equalTo: scrolView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: scrolView.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: scrolView.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor),
+            containerView.widthAnchor.constraint(equalTo: scrolView.widthAnchor),
+            
+            descriptionEvent.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            descriptionEvent.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            descriptionEvent.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            descriptionEvent.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
         ])
+        
+        // define o tamanho do contentSize do UIScrollView com base no tamanho do UILabel
+        scrolView.contentSize = CGSize(width: containerView.frame.size.width, height: descriptionEvent.frame.size.height + 20)
     }
-    
 }
