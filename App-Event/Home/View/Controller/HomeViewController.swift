@@ -55,6 +55,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.setupCell(model: eventoRecebidos[indexPath.row])
         cell?.delegate(delegate: self)
         cell?.selectionStyle = .none
+        cell?.acessarButton.row = indexPath.row
         viewModel.getImage(image: eventoRecebidos[indexPath.row].image) { image in
             DispatchQueue.main.async {
                 cell?.imageOfEvent.image = image
@@ -71,11 +72,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: HomeCellProtocol {
-    func tappedButton() {
+    func tappedButton(row: Int) {
         let vc = InformationViewController()
+        vc.eventModel = eventoRecebidos[row]
+        vc.viewModel = viewModel
         navigationController?.pushViewController(vc , animated: true)
     }
-    
     
 }
 

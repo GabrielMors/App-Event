@@ -64,8 +64,10 @@ class HomeViewModel {
                 if let data = data, let image = UIImage(data: data) {
                     // O download da imagem foi concluído, você pode usar a imagem aqui
                     completion(image)
-                    print(image)
                     
+                } else {
+                    let defaultImage = UIImage(named: "default")!
+                    completion(defaultImage)
                 }
             }.resume()
         }

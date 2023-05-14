@@ -1,7 +1,11 @@
 import UIKit
 
 protocol HomeCellProtocol: AnyObject {
-    func tappedButton()
+    func tappedButton(row: Int)
+}
+
+class CustomButton: UIButton {
+    var row: Int?
 }
 
 class HomeCell: UITableViewCell {
@@ -28,13 +32,14 @@ class HomeCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
-        image.tintColor = .black
+        image.layer.borderWidth = 1.5
+        image.layer.borderColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1).cgColor
         
         return image
     }()
     
-    lazy var acessarButton: UIButton = {
-        let button = UIButton()
+    lazy var acessarButton: CustomButton = {
+        let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Acessar", for: .normal)
         button.tintColor = UIColor.black
@@ -42,7 +47,7 @@ class HomeCell: UITableViewCell {
         button.backgroundColor = .darkGray
         button.clipsToBounds = true
         button.layer.cornerRadius = 7.5
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_ :)), for: .touchUpInside)
         
         return button
     }()
@@ -83,7 +88,7 @@ class HomeCell: UITableViewCell {
         ])
     }
     
-    @objc private func buttonTapped() {
-        delegate?.tappedButton()
+    @objc private func buttonTapped(_ customButton: CustomButton) {
+        delegate?.tappedButton(row: customButton.row ?? 0)
     }
 }
