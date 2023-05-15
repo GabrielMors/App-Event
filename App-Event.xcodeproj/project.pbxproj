@@ -70,7 +70,7 @@
 			children = (
 				C4DB43452A0C8D0C00F49417 /* Utilits */,
 				C444A4502A07DA6B0075F4EB /* Model */,
-				C4DB43482A0C91D000F49417 /* InformationScreen */,
+				C4DB43482A0C91D000F49417 /* Information */,
 				C444A44A2A07C8880075F4EB /* Home */,
 				C444A4442A07C5C70075F4EB /* Resources */,
 				C444A43E2A07BE490075F4EB /* Info.plist */,
@@ -131,12 +131,12 @@
 			path = Utilits;
 			sourceTree = "<group>";
 		};
-		C4DB43482A0C91D000F49417 /* InformationScreen */ = {
+		C4DB43482A0C91D000F49417 /* Information */ = {
 			isa = PBXGroup;
 			children = (
 				C4DB43522A0C94F900F49417 /* View */,
 			);
-			path = InformationScreen;
+			path = Information;
 			sourceTree = "<group>";
 		};
 		C4DB434D2A0C937900F49417 /* Screen */ = {

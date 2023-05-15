@@ -7,7 +7,8 @@ enum textLabel: String {
 
 class HomeScreen: UIView {
     
-    lazy var ListOfEventLabel: UILabel = {
+// MARK: - Elementos de visuais
+    lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = textLabel.name.rawValue
@@ -37,7 +38,7 @@ class HomeScreen: UIView {
     
     private func addSubViews() {
         self.addSubview(self.tableView)
-        self.addSubview(self.ListOfEventLabel)
+        self.addSubview(self.titleLabel)
     }
     
     public func configProtocolTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
@@ -54,9 +55,9 @@ class HomeScreen: UIView {
         tableView.pin(to: self)
         NSLayoutConstraint.activate([
             
-            ListOfEventLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
-            ListOfEventLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            ListOfEventLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         
         ])
     }

@@ -17,7 +17,7 @@ class InformationScreen: UIView {
     lazy var scrolView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.isScrollEnabled = true // desabilita o scroll para a imagem
+        scroll.isScrollEnabled = true
         
         return scroll
     }()
@@ -29,7 +29,7 @@ class InformationScreen: UIView {
         return view
     }()
     
-    lazy var descriptionEvent: UILabel = {
+    lazy var descriptionEventLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .justified
@@ -49,7 +49,7 @@ class InformationScreen: UIView {
     
     private func addSubViews() {
         scrolView.addSubview(containerView)
-        containerView.addSubview(descriptionEvent)
+        containerView.addSubview(descriptionEventLabel)
         addSubview(imageEvent)
         addSubview(scrolView)
     }
@@ -76,13 +76,13 @@ class InformationScreen: UIView {
             containerView.bottomAnchor.constraint(equalTo: scrolView.bottomAnchor),
             containerView.widthAnchor.constraint(equalTo: scrolView.widthAnchor),
             
-            descriptionEvent.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            descriptionEvent.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-            descriptionEvent.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
-            descriptionEvent.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
+            descriptionEventLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            descriptionEventLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            descriptionEventLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            descriptionEventLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
         ])
         
         // define o tamanho do contentSize do UIScrollView com base no tamanho do UILabel
-        scrolView.contentSize = CGSize(width: containerView.frame.size.width, height: descriptionEvent.frame.size.height + 20)
+        scrolView.contentSize = CGSize(width: containerView.frame.size.width, height: descriptionEventLabel.frame.size.height + 20)
     }
 }

@@ -19,6 +19,7 @@ class HomeCell: UITableViewCell {
         self.delegate = delegate
     }
     
+// MARK: - Elementos de visuais
     lazy var NameOfEvent: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false

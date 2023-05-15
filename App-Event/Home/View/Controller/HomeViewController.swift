@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
         homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
     }
     
-    // A lista de eventos com um loop e adiciona cada evento à lista eventoRecebidos
+    // A lista de eventos com um loop e adiciona cada evento à lista receivedEvents
     private func addEvent() {
         homeViewModel.getEvents { eventos in
             for evento in eventos {
