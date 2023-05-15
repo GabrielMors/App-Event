@@ -9,16 +9,6 @@ import UIKit
 
 class HomeViewModel {
     
-    private var listName: [Evento] = []
-
-    func numberOfRowsInSection() -> Int {
-        listName.count
-    }
-
-    func getList(index: Int) -> Evento {
-        listName[index]
-    }
-    
     func getEvents(completion: @escaping ([Evento]) -> Void) {
         
         guard let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events") else {
@@ -72,8 +62,6 @@ class HomeViewModel {
             }.resume()
         }
     }
-    
-    
 }
 
 

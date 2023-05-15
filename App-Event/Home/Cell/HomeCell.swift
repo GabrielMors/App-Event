@@ -73,7 +73,6 @@ class HomeCell: UITableViewCell {
         imageOfEvent.image = UIImage(systemName: model.image)
     }
     
-    
     private func configConstraints() {
         NSLayoutConstraint.activate([
             

@@ -13,9 +13,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    var homeScreen: HomeScreen?
-    var viewModel: HomeViewModel = HomeViewModel()
-    var eventoRecebidos: [Evento] = []
+    private var homeScreen: HomeScreen?
+    private var homeViewModel: HomeViewModel = HomeViewModel()
+    var receivedEvents: [Evento] = []
     
     override func loadView() {
         homeScreen = HomeScreen()
@@ -25,21 +25,25 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configBackgrounsColor()
-        homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
-        requestAPI()
+        configureTableView()
+        addEvent()
     }
     
     private func configBackgrounsColor() {
         view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
     }
     
-// A lista de eventos com um loop e adiciona cada evento à lista eventoRecebidos
-    private func requestAPI() {
-        viewModel.getEvents { eventos in
+    private func configureTableView() {
+        homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
+    }
+    
+    // A lista de eventos com um loop e adiciona cada evento à lista eventoRecebidos
+    private func addEvent() {
+        homeViewModel.getEvents { eventos in
             for evento in eventos {
-                self.eventoRecebidos.append(evento)
+                self.receivedEvents.append(evento)
             }
-//  garante que a atualização da interface do usuário seja feita na thread principal
+            //  garante que a atualização da interface do usuário seja feita na thread principal
             DispatchQueue.main.async {
                 self.homeScreen?.tableView.reloadData()
             }
@@ -50,21 +54,23 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        eventoRecebidos.count
+        receivedEvents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell
-        cell?.setupCell(model: eventoRecebidos[indexPath.row])
-        cell?.delegate(delegate: self)
-        cell?.selectionStyle = .none
-        cell?.acessarButton.row = indexPath.row
-        viewModel.getImage(image: eventoRecebidos[indexPath.row].image) { image in
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell else {
+              fatalError("Deu ruim! não foi possível criar a célula")
+          }
+        cell.setupCell(model: receivedEvents[indexPath.row])
+        cell.delegate(delegate: self)
+        cell.selectionStyle = .none
+        cell.acessarButton.row = indexPath.row
+        homeViewModel.getImage(image: receivedEvents[indexPath.row].image) { image in
             DispatchQueue.main.async {
-                cell?.imageOfEvent.image = image
+                cell.imageOfEvent.image = image
             }
         }
-        return cell ?? UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -75,8 +81,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomeCellProtocol {
     func tappedButton(row: Int) {
         let vc = InformationViewController()
-        vc.eventModel = eventoRecebidos[row]
-        vc.viewModel = viewModel
+        vc.eventModel = receivedEvents[row]
+        vc.viewModel = homeViewModel
         navigationController?.pushViewController(vc , animated: true)
     }
 }

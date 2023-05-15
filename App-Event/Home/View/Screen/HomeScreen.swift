@@ -22,18 +22,17 @@ class HomeScreen: UIView {
     }()
     
     lazy var tableView: UITableView = {
-        let tb: UITableView = UITableView()
-        tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.isScrollEnabled = true
+        let tableView: UITableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isScrollEnabled = true
         
-        return tb
+        return tableView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
         configContraints()
-        configConstraintsLabel()
     }
     
     private func addSubViews() {
@@ -47,15 +46,12 @@ class HomeScreen: UIView {
         tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
     }
     
-    private func configContraints() {
-        tableView.pin(to: self)
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configConstraintsLabel() {
+    private func configContraints() {
+        tableView.pin(to: self)
         NSLayoutConstraint.activate([
             
             ListOfEventLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
@@ -64,7 +60,6 @@ class HomeScreen: UIView {
         
         ])
     }
-    
 }
 
 

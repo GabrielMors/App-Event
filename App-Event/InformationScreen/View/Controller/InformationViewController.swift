@@ -7,7 +7,6 @@ class InformationViewController: UIViewController {
     var viewModel: HomeViewModel?
     var eventModel: Evento?
     
-    
     override func loadView() {
         infoScreen = InformationScreen()
         view = infoScreen
@@ -24,6 +23,8 @@ class InformationViewController: UIViewController {
         view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
         
     }
+    
+    
     
     
 }
