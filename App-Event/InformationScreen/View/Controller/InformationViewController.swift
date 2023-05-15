@@ -7,6 +7,7 @@ class InformationViewController: UIViewController {
     var viewModel: HomeViewModel?
     var eventModel: Evento?
     
+    
     override func loadView() {
         infoScreen = InformationScreen()
         view = infoScreen

@@ -59,15 +59,20 @@ class HomeCell: UITableViewCell {
         contentView.addSubview(self.acessarButton)
         configConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func buttonTapped(_ customButton: CustomButton) {
+        delegate?.tappedButton(row: customButton.row ?? 0)
     }
     
     func setupCell(model: Evento) {
         NameOfEvent.text = model.title
         imageOfEvent.image = UIImage(systemName: model.image)
     }
+    
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
@@ -86,9 +91,5 @@ class HomeCell: UITableViewCell {
             acessarButton.widthAnchor.constraint(equalToConstant: 80),
             
         ])
-    }
-    
-    @objc private func buttonTapped(_ customButton: CustomButton) {
-        delegate?.tappedButton(row: customButton.row ?? 0)
     }
 }

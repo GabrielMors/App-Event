@@ -3,6 +3,7 @@ import UIKit
 
 class InformationScreen: UIView {
     
+    // MARK: - Elementos de visuais
     lazy var imageEvent: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -40,12 +41,10 @@ class InformationScreen: UIView {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubViews()
         configConstraints()
-        
     }
     
     private func addSubViews() {
