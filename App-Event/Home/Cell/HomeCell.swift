@@ -12,7 +12,7 @@ class HomeCell: UITableViewCell {
     
     static let identifier: String = String(describing: HomeCell.self)
     
-    var delegate: HomeCellProtocol?
+    weak var delegate: HomeCellProtocol?
     var viewModel: HomeViewModel?
     
     func delegate(delegate: HomeCellProtocol) {

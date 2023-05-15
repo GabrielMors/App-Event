@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  App-Event
-//
-//  Created by Gabriel Mors  on 07/05/23.
-//
 
 import UIKit
 
@@ -37,13 +31,11 @@ class HomeViewController: UIViewController {
         homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
     }
     
-    // A lista de eventos com um loop e adiciona cada evento à lista receivedEvents
+    
     private func addEvent() {
         homeViewModel.getEvents { eventos in
-            for evento in eventos {
-                self.receivedEvents.append(evento)
-            }
-            //  garante que a atualização da interface do usuário seja feita na thread principal
+            self.receivedEvents = eventos
+            
             DispatchQueue.main.async {
                 self.homeScreen?.tableView.reloadData()
             }
@@ -54,12 +46,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        receivedEvents.count
+        receivedEvents.endIndex
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell else {
-              fatalError("Deu ruim! não foi possível criar a célula")
+              return UITableViewCell()
           }
         cell.setupCell(model: receivedEvents[indexPath.row])
         cell.delegate(delegate: self)

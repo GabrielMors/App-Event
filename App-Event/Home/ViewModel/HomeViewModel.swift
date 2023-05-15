@@ -1,9 +1,3 @@
-//
-//  HomeViewModel.swift
-//  App-Event
-//
-//  Created by Gabriel Mors  on 07/05/23.
-//
 
 import UIKit
 
@@ -42,7 +36,7 @@ class HomeViewModel {
     func getImage(image: String, completion: @escaping (UIImage) -> Void ) {
         
         if let imageUrl = URL(string: image) {
-            // Inicia uma tarefa de download
+            
             URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                 if let error = error {
                     print("Erro ao baixar a imagem: \(error.localizedDescription)")
