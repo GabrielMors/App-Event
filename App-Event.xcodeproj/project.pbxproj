@@ -19,6 +19,7 @@
 		C4DB43472A0C8D9200F49417 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB43462A0C8D9200F49417 /* UIView+Extension.swift */; };
 		C4DB434A2A0C934C00F49417 /* InformationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB43492A0C934C00F49417 /* InformationScreen.swift */; };
 		C4DB434C2A0C937400F49417 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DB434B2A0C937400F49417 /* InformationViewController.swift */; };
+		C4F9A23B2A194A30004EA00E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9A23A2A194A30004EA00E /* UIColor.swift */; };
 		E906B2F37F80ADE8E4016F5B /* Pods_App_Event.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEBBE685F57B867C37F12C0 /* Pods_App_Event.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		C4DB43462A0C8D9200F49417 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C4DB43492A0C934C00F49417 /* InformationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationScreen.swift; sourceTree = "<group>"; };
 		C4DB434B2A0C937400F49417 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		C4F9A23A2A194A30004EA00E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +70,6 @@
 				646513D15ACBB306D49B8B38 /* Pods-App-Event.debug.xcconfig */,
 				C40573C43DDC7DB254DAD772 /* Pods-App-Event.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -152,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				C4DB43462A0C8D9200F49417 /* UIView+Extension.swift */,
+				C4F9A23A2A194A30004EA00E /* UIColor.swift */,
 			);
 			path = Utilits;
 			sourceTree = "<group>";
@@ -335,6 +337,7 @@
 				C4DB43472A0C8D9200F49417 /* UIView+Extension.swift in Sources */,
 				C444A4522A07DA7A0075F4EB /* HomeModel.swift in Sources */,
 				C444A44F2A07CC6B0075F4EB /* HomeCell.swift in Sources */,
+				C4F9A23B2A194A30004EA00E /* UIColor.swift in Sources */,
 				C4DB434C2A0C937400F49417 /* InformationViewController.swift in Sources */,
 				C444A4332A07BE460075F4EB /* SceneDelegate.swift in Sources */,
 				C4DB434A2A0C934C00F49417 /* InformationScreen.swift in Sources */,

@@ -24,13 +24,12 @@ class HomeViewController: UIViewController {
     }
     
     private func configBackgrounsColor() {
-        view.backgroundColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
+        view.backgroundColor = UIColor.lightGray
     }
     
     private func configureTableView() {
         homeScreen?.configProtocolTableView(delegate: self, dataSource: self)
     }
-    
     
     private func addEvent() {
         homeViewModel.getEvents { eventos in
@@ -41,6 +40,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
