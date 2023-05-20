@@ -4,6 +4,12 @@ protocol HomeCellProtocol: AnyObject {
     func tappedButton(row: Int)
 }
 
+private enum Color {
+    static let lightGray = UIColor.lightGray
+    static let darkGray = UIColor.darkGray
+    static let borderColor = UIColor(red: 164/255, green: 170/255, blue: 193/255, alpha: 1)
+}
+
 class CustomButton: UIButton {
     var row: Int?
 }
@@ -72,6 +78,7 @@ class HomeCell: UITableViewCell {
     func setupCell(model: Evento) {
         NameOfEvent.text = model.title
         imageOfEvent.image = UIImage(systemName: model.image)
+        
     }
     
     private func configConstraints() {

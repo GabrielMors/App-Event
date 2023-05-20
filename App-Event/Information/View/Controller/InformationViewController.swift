@@ -1,4 +1,3 @@
-
 import UIKit
 
 class InformationViewController: UIViewController {
@@ -24,11 +23,11 @@ class InformationViewController: UIViewController {
     }
     
     private func configureImage() {
-        viewModel?.getImage(image: eventModel?.image ?? "") { image in
-            DispatchQueue.main.async {
-                self.infoScreen?.imageEvent.image = image
-            }
+        guard let imageView = infoScreen?.imageEvent else {
+            return
         }
+        
+        viewModel?.getImage(image: eventModel?.image ?? "", into: imageView)
     }
     
     private func configureDescription() {

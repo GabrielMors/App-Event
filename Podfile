@@ -8,6 +8,7 @@ target 'App-Event' do
   # Pods for App-Event
 
 pod 'Kingfisher', '~> 7.0'
+pod 'Alamofire'
 
 end
 

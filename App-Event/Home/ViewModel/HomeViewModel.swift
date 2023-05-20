@@ -1,63 +1,31 @@
-
 import UIKit
+import Kingfisher
+import Alamofire
 
 class HomeViewModel {
     
     func getEvents(completion: @escaping ([Evento]) -> Void) {
         
         guard let url = URL(string: "http://5f5a8f24d44d640016169133.mockapi.io/api/events") else {
-        
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "Erro desconhecido")
-                
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                print(httpResponse.statusCode)
-            }
-            
-            do {
-                let events = try JSONDecoder().decode([Evento].self, from: data)
+        AF.request(url).validate().responseDecodable(of: [Evento].self) { response in
+            switch response.result {
+            case .success(let events):
                 completion(events)
-            } catch {
+            case .failure(let error):
                 print(error.localizedDescription)
             }
         }
-        
-        task.resume()
     }
     
-    func getImage(image: String, completion: @escaping (UIImage) -> Void ) {
-        
-        if let imageUrl = URL(string: image) {
-            
-            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                if let error = error {
-                    print("Erro ao baixar a imagem: \(error.localizedDescription)")
-                    
-                }
-
-                if let data = data, let image = UIImage(data: data) {
-                    completion(image)
-                    
-                } else {
-                    let defaultImage = UIImage(named: "default")!
-                    completion(defaultImage)
-                }
-            }.resume()
+    func getImage(image: String, into imageView: UIImageView) {
+        guard let imageUrl = URL(string: image) else {
+            imageView.image = UIImage(named: "default")
+            return
         }
+        
+        imageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "default"))
     }
 }
-
-
-
-
-
-
-

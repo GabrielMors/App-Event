@@ -57,11 +57,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate(delegate: self)
         cell.selectionStyle = .none
         cell.acessarButton.row = indexPath.row
-        homeViewModel.getImage(image: receivedEvents[indexPath.row].image) { image in
-            DispatchQueue.main.async {
-                cell.imageOfEvent.image = image
-            }
-        }
+        homeViewModel.getImage(image: receivedEvents[indexPath.row].image, into: cell.imageOfEvent)
+        
         return cell
     }
     
